@@ -9,7 +9,7 @@ import App from './app/app';
 SuperTokens.init({
   appInfo: {
     appName: 'supertokens-poc',
-    apiDomain: 'http://localhost:8030',
+    apiDomain: 'http://localhost:4030',
     websiteDomain: 'http://localhost:3030',
     apiBasePath: '/auth',
     websiteBasePath: '/auth',

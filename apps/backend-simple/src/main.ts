@@ -6,6 +6,7 @@ import { plugin } from "supertokens-node/framework/fastify";
 import supertokens from "supertokens-node";
 import Session from "supertokens-node/recipe/session";
 import EmailPassword from "supertokens-node/recipe/emailpassword";
+import Dashboard from "supertokens-node/recipe/dashboard";
 
 supertokens.init({
   framework: "fastify",
@@ -16,14 +17,15 @@ supertokens.init({
   appInfo: {
     // learn more about this on https://supertokens.com/docs/session/appinfo
     appName: 'supertokens-poc',
-    apiDomain: 'http://localhost:8030',
+    apiDomain: 'http://localhost:4030',
     websiteDomain: 'http://localhost:3030',
     apiBasePath: "/auth",
     websiteBasePath: "/auth",
   },
   recipeList: [
     EmailPassword.init(),
-    Session.init()
+    Session.init(),
+    Dashboard.init(),
   ]
 });
 
@@ -35,7 +37,7 @@ const server = Fastify({
 });
 
 server.register(cors, {
-  origin: "<YOUR_WEBSITE_DOMAIN>",
+  origin: "http://localhost:3030",
   allowedHeaders: ['Content-Type', ...supertokens.getAllCORSHeaders()],
   credentials: true,
 });
