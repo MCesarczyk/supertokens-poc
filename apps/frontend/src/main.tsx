@@ -1,0 +1,31 @@
+import { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
+import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
+import Session from 'supertokens-auth-react/recipe/session';
+import App from './app/app';
+
+SuperTokens.init({
+  appInfo: {
+    appName: 'supertokens-poc',
+    apiDomain: 'http://localhost:8030',
+    websiteDomain: 'http://localhost:3030',
+    apiBasePath: '/auth',
+    websiteBasePath: '/auth',
+  },
+  recipeList: [EmailPassword.init(), Session.init()],
+});
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <StrictMode>
+    <SuperTokensWrapper>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SuperTokensWrapper>
+  </StrictMode>
+);

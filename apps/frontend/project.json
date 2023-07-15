@@ -53,7 +53,9 @@
       },
       "configurations": {
         "development": {
-          "buildTarget": "frontend:build:development"
+          "buildTarget": "frontend:build:development",
+          "port": 3030,
+          "open": true
         },
         "production": {
           "buildTarget": "frontend:build:production",
