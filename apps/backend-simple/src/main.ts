@@ -24,7 +24,9 @@ supertokens.init({
   },
   recipeList: [
     EmailPassword.init(),
-    Session.init(),
+    Session.init({
+      exposeAccessTokenToFrontendInCookieBasedAuth: true,
+    }),
     Dashboard.init(),
   ]
 });
@@ -32,24 +34,24 @@ supertokens.init({
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 4030;
 
-const server = Fastify({
+const fastify = Fastify({
   logger: true,
 });
 
-server.register(cors, {
+fastify.register(cors, {
   origin: "http://localhost:3030",
   allowedHeaders: ['Content-Type', ...supertokens.getAllCORSHeaders()],
   credentials: true,
 });
 
-server.register(formDataPlugin);
-server.register(plugin);
+fastify.register(formDataPlugin);
+fastify.register(plugin);
 
-server.register(app);
+fastify.register(app);
 
-server.listen({ port, host }, (err) => {
+fastify.listen({ port, host }, (err) => {
   if (err) {
-    server.log.error(err);
+    fastify.log.error(err);
     process.exit(1);
   } else {
     console.log(`[ ready ] http://${host}:${port}`);

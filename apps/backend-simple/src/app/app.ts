@@ -7,11 +7,9 @@ import { errorHandler } from "supertokens-node/framework/fastify";
 export interface AppOptions { }
 
 export async function app(fastify: FastifyInstance, opts: AppOptions) {
-  // Place here your custom code!
-
   fastify.setErrorHandler(errorHandler());
 
-  // Do not touch the following lines
+  fastify.register(require('../user/user.controller'));
 
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused

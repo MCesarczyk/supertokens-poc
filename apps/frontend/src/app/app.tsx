@@ -1,12 +1,21 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useEffect } from 'react';
 import * as reactRouterDom from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import { getSuperTokensRoutesForReactRouterDom } from 'supertokens-auth-react/ui';
 import { EmailPasswordPreBuiltUI } from 'supertokens-auth-react/recipe/emailpassword/prebuiltui';
+import Session from 'supertokens-auth-react/recipe/session';
 import style from './app.module.css';
 
-import { Route, Routes, Link } from 'react-router-dom';
+async function getToken(): Promise<void> {
+  const accessToken = await Session.getAccessToken();
+  console.log(accessToken);
+}
 
 export function App() {
+  useEffect(() => {
+    getToken();
+  }, []);
+
   return (
     <div className={style.wrapper}>
       <h1>SuperTokens POC</h1>
