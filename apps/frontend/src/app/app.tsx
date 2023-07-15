@@ -3,8 +3,9 @@ import * as reactRouterDom from 'react-router-dom';
 import { Route, Routes, Link } from 'react-router-dom';
 import { getSuperTokensRoutesForReactRouterDom } from 'supertokens-auth-react/ui';
 import { EmailPasswordPreBuiltUI } from 'supertokens-auth-react/recipe/emailpassword/prebuiltui';
-import Session from 'supertokens-auth-react/recipe/session';
+import Session, { SessionAuth } from 'supertokens-auth-react/recipe/session';
 import style from './app.module.css';
+import { Dashboard } from 'apps/frontend/src/app/dashboard';
 
 async function getToken(): Promise<void> {
   const accessToken = await Session.getAccessToken();
@@ -24,6 +25,14 @@ export function App() {
           EmailPasswordPreBuiltUI,
         ])}
         <Route path="/" element={<Link to="/auth">Login</Link>} />
+        <Route
+          path="/dashboard"
+          element={
+            <SessionAuth>
+              <Dashboard />
+            </SessionAuth>
+          }
+        />
       </Routes>
     </div>
   );
