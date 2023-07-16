@@ -14,7 +14,20 @@ SuperTokens.init({
     apiBasePath: '/auth',
     websiteBasePath: '/auth',
   },
-  recipeList: [EmailPassword.init(), Session.init()],
+  recipeList: [
+    EmailPassword.init({
+      getRedirectionURL: async (context) => {
+        if (context.action === 'SUCCESS') {
+          if (context.redirectToPath !== undefined) {
+            return context.redirectToPath;
+          }
+          return '/dashboard';
+        }
+        return undefined;
+      },
+    }),
+    Session.init(),
+  ],
 });
 
 const root = ReactDOM.createRoot(
