@@ -7,9 +7,18 @@ async function getToken(): Promise<void> {
   console.log(accessToken);
 }
 
+async function getUserInfo() {
+  if (await Session.doesSessionExist()) {
+    let userId = await Session.getUserId();
+    let accessTokenPayload = await Session.getAccessTokenPayloadSecurely();
+    console.log(userId, accessTokenPayload);
+  }
+}
+
 export const Dashboard = () => {
   useEffect(() => {
     getToken();
+    getUserInfo();
   }, []);
   async function onLogout() {
     await signOut();
