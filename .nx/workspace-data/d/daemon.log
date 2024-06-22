@@ -1,0 +1,12 @@
+[NX Daemon Server] - 2024-06-22T01:28:11.814Z - Started listening on: /tmp/c6eaa466a3845839f480/d.sock
+[NX Daemon Server] - 2024-06-22T01:28:11.815Z - [WATCHER]: Subscribed to changes within: /home/mcesarcz/KEYCLOAK/supertokens-poc (native)
+[NX Daemon Server] - 2024-06-22T01:28:11.823Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-06-22T01:28:11.824Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-06-22T01:28:11.825Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-06-22T01:28:11.827Z - [REQUEST]: Responding to the client. handleGlob
+[NX Daemon Server] - 2024-06-22T01:28:11.827Z - Done responding to the client handleGlob
+[NX Daemon Server] - 2024-06-22T01:28:11.827Z - Handled GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-06-22T01:28:12.100Z - [REQUEST]: Responding to the client. handleNxWorkspaceFiles
+[NX Daemon Server] - 2024-06-22T01:28:12.100Z - Done responding to the client handleNxWorkspaceFiles
+[NX Daemon Server] - 2024-06-22T01:28:12.100Z - Handled GET_NX_WORKSPACE_FILES. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-06-22T01:28:12.750Z - Closed a connection. Number of open connections: 0
